@@ -34,3 +34,7 @@ iOS Home Screen installation of a web app works most reliably when the files are
 - No automatic WhatsApp sending; the PDF is saved/shared using the iOS share sheet.
 - No invoice deletion or payment reversal UI yet. Back up before making important changes.
 - Verify your own booking terms, tax details, and legal requirements before using invoices as official accounting records.
+
+
+## Branding update (v2)
+This bundle includes the supplied Manuelclicks Photography logo, app icon, blue/black/grey styling, and logo on printed invoices/receipts. To update an existing GitHub Pages repository, upload and overwrite the files in this bundle at the repository root. Do not delete the repository. Existing local app records are stored in the browser, not in these files; still export a backup before updating. After deployment, close/reopen the app or refresh the website if the old design remains cached.

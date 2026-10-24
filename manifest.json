@@ -4,8 +4,15 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f3f5f8",
-  "theme_color": "#172d4a",
+  "background_color": "#f4f7fa",
+  "theme_color": "#087eae",
   "description": "Offline-first invoices, payments, clients, packages and receipts for Manuelclicks Photography.",
-  "icons": []
+  "icons": [
+    {
+      "src": "./app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
