@@ -1,40 +1,47 @@
-# Manuelclicks Invoice — starter app
+# Manuelclicks Invoice
 
-This is a first working prototype for Manuelclicks Photography.
+A mobile-friendly, local-first invoicing app for Manuelclicks Photography. It is designed for free GitHub Pages hosting and uses the browser's local storage; it does not send client records to a server.
 
-## Features
-- Local client database
-- Reusable photography packages
-- Invoice creation and automatic totals in GH₵
-- Deposit estimate, payment recording, balance tracking
-- PDF invoice and payment receipt through the iPhone print/share interface
-- JSON backup and restore, plus invoice summary CSV export
-- Offline app shell after the first online load
+## Included
+- Dashboard with clients, invoices, outstanding balances and recorded payments.
+- Client and reusable photography package management.
+- Invoice creation with editable line items, separate package name/description, discounts, charges, deposit, due dates and status.
+- Multiple event programme entries per invoice, each with free-text date and location, time, address, directions and instructions.
+- Payment tracking with transaction references, instalments and payment-specific receipts.
+- Browser print / Save as PDF layouts for invoices and receipts.
+- JSON backup/restore and invoice summary CSV export.
+- Responsive interface, web app manifest and service worker for basic app-shell caching.
 
-## Important
-Data is stored in browser localStorage on the device. It is not encrypted, synced, or automatically backed up. Export a backup regularly. Do not clear Safari website data unless you have a backup.
+## Deploy to your existing GitHub Pages repository
+1. Open the existing repository on GitHub. **Do not delete the repository.**
+2. Before replacing files, open the current published app and export a JSON backup from its Settings page if that version has a backup feature. Keep that backup somewhere safe on your computer.
+3. Download and unzip the project ZIP. You should see `index.html`, `manifest.json`, `sw.js`, `icon.svg`, `logo.jpg` and this README.
+4. In your existing repository, open the folder currently used by GitHub Pages (often the repository root, or `/docs` if your Pages setting uses that folder).
+5. Upload the new files into that same published folder. Replace files with the same names when GitHub asks. If your current Pages site uses `/docs`, upload all files there instead of the repository root.
+6. Commit the changes. Keep the existing repository and its GitHub Pages settings.
+7. Wait for the Pages deployment to finish, then open the website and test it.
+8. On iPhone, open the HTTPS website in Safari, tap Share, then **Add to Home Screen**.
 
-## Install on iPhone
-iOS Home Screen installation of a web app works most reliably when the files are served over HTTPS. Opening `index.html` directly from Files is useful for a quick test, but does not provide a proper installable offline app.
+## Safe upgrade and data preservation
+The app's local data is stored in the browser on the device, not in the GitHub repository. Updating website files normally leaves browser local storage in place, but no app can guarantee preservation if browser data is cleared or storage keys/schema change. Export a JSON backup before updating. After updating, open the app and confirm clients, invoices, programmes and payments still appear. If needed, restore your backup in Settings. Restore replaces the app's current records, so export a backup of current records first.
 
-1. Upload `index.html`, `manifest.json`, and `sw.js` to a static HTTPS host you control (for example, a private GitHub repository published with GitHub Pages, or another static host).
-2. Open the HTTPS page in Safari on your iPhone.
-3. Tap Share → Add to Home Screen. If shown, enable “Open as Web App”, then tap Add.
-4. Open the app from the Home Screen and add a test client and invoice.
-5. Go to Settings → Export backup and save the JSON file somewhere safe, such as iCloud Drive or an external drive.
+This project uses the storage key `manuelclicks_invoice_v1`. Do not change it casually: doing so makes the app look like it has no previous records. If the data schema changes in a future version, implement a migration rather than deleting or resetting the key.
 
-## First-run setup
-- Open Settings and confirm your business contact details and default deposit percentage.
-- Add your common packages under Packages.
-- Add a test client, create an invoice, record a test payment, and check the receipt before using it with real clients.
+## Local testing
+For a proper test, serve the folder over HTTP rather than opening `index.html` directly. For example, if Python is installed, run `python3 -m http.server 8000` from the project folder and visit `http://localhost:8000`. Service workers require HTTPS or localhost. Some browser print features and iPhone installation need a deployed HTTPS site.
 
-## Prototype limitations
-- This is a starter prototype, not an App Store-distributed native iOS app.
-- PDF output uses the iOS browser print flow; choose the share/save PDF option in the print preview.
-- No automatic WhatsApp sending; the PDF is saved/shared using the iOS share sheet.
-- No invoice deletion or payment reversal UI yet. Back up before making important changes.
-- Verify your own booking terms, tax details, and legal requirements before using invoices as official accounting records.
+## Data and privacy notes
+- Records stay in the browser profile on the current device. There is no automatic cloud sync or multi-user access.
+- Clearing browser/site data, removing the browser profile, or losing the device can lose records. Export backups regularly.
+- Do not upload JSON backups or real client data to the public GitHub repository.
+- The app cannot guarantee recovery of records if the browser's local storage is full or removed.
+- The app uses browser print-to-PDF. Verify invoice and receipt page breaks on the actual browser/device you use before relying on the documents for clients.
+- The service worker caches the app shell for loading support, but not every feature is guaranteed to work offline. Printing, browser storage and first load still depend on browser support.
 
+## Checks performed for this delivery
+- JavaScript syntax check (run before publishing).
+- HTML and manifest files included with consistent app storage key.
+- Manual browser/device print testing has **not** been performed in this environment. Before real use, test client creation, multiple event programmes, line-item removal, payment-specific receipts, JSON restore and A4 print output in your target browser.
 
-## Branding update (v2)
-This bundle includes the supplied Manuelclicks Photography logo, app icon, blue/black/grey styling, and logo on printed invoices/receipts. To update an existing GitHub Pages repository, upload and overwrite the files in this bundle at the repository root. Do not delete the repository. Existing local app records are stored in the browser, not in these files; still export a backup before updating. After deployment, close/reopen the app or refresh the website if the old design remains cached.
+## Important limitations
+This is a client-side app, not an accounting platform with a server database. Anyone using the same browser profile can access its records. There is no login, encryption, cloud backup, automated email sending, tax calculation or cross-device sync. Keep the device protected and backups private.
