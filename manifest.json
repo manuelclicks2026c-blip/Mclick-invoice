@@ -1,0 +1,11 @@
+{
+  "name": "Manuelclicks Invoice",
+  "short_name": "MC Invoice",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f5f8",
+  "theme_color": "#172d4a",
+  "description": "Offline-first invoices, payments, clients, packages and receipts for Manuelclicks Photography.",
+  "icons": []
+}
